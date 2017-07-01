@@ -1,7 +1,32 @@
 \documentclass[main.tex]{subfiles}
 
 \begin{document}
+Equipment used in the experiment:
 
-Hello.
+\begin{itemize}
+	\item Tektronix function generator
+	\item CW \& Pulse Mode Buffer
+	\item one variable resistance terminal box 0-110$\Omega$
+	\item one current probe tap
+	\item BNC connectors
+	\item one BNC shorting termination
+	\item one 60m cable
+	\item two 9m cables
+	\item Agilent Oscilloscope Model DSO6012A
+	\item Voltage Probe
+	\item Oscilloscope camera
+	\item Vernier caliper
+	\item cross-sectioned cable
+\end{itemize}
+
+Using the Vernier caliper, we begin by measuring diameter of the iner conducting wire, and the insulating dielectric, of the cross-sectioned cable (cut like shown in figure 1). 
+
+60 meter cable is connected to the function generator, and oscilloscope is used to display the input and reflected voltages. Current probe is clipped over the conductor. Buffer source impedance is set to 75 ohms and its output mode to CW. 
+
+We vary the frequency from 1MHz to 10MHz, recording the voltage and current observed. Near frequency values where voltage appers to be the lowest, and current highest, we take about 5 measurements separated by 0.05-0.1MHz. Then we take some additional measurements in between those frequency tresholds. After finishing measurements, we attach the BNC shorting termination at the end of our cable, and repeat the same procedure, this time doing measurements for the shorted circuit termination instead of the open circuit termination. 
+
+Next, buffer is set to pulse mode, and controls are set so that the pulses are 22ns in duration and have the frequency of 100MHz. We store the recorded reflection of pulses in the case of open circuit termination, shorted circuit termination (both as described above), and matched load, which is achieved by connecting the end of the 60m cable to the variable resistance terminal box. We repeat this procedure for a 9m cable, and an 18m cable (which we get by connecting two 9m cables). 
+
+Finally, we record the phase relationship near frequencies where $Z_{in} = Z_{min}$, i.e. lowest voltage, highest current, for all three cases mentioned above - open termination, shorted termination, matched load. We repeat the procedure for $Z_{in} = Z_{max}$, i.e. highest voltage, lowest current. 
 
 \end{document}

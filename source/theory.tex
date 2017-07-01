@@ -2,6 +2,150 @@
 
 \begin{document}
 
-Hello.
+If we denote by $L$ inductance per unit lenght, we have, by definition:
+
+\begin{equation}
+	\frac{\partial V}{\partial x} = -L \frac{\partial I}{\partial t}
+	\label{eqn1}
+\end{equation}
+
+Similarily, if $C$ is capacitance per unit length:
+
+\begin{equation}
+	\frac{\partial I}{\partial x} = -C \frac{\partial V}{\partial t}
+	\label{eqn2}
+\end{equation}
+
+By combining these equations we have:
+
+$$ \frac{\partial ^2 V}{\partial x^2} = \frac{\partial \frac{\partial V}{\partial x}}{\partial x} = \frac{-L \partial \frac{\partial I}{\partial t}}{\partial x} = -L \frac{\partial \frac{\partial I}{\partial x}}{\partial t} = -L \frac{-C \partial \frac{\partial V}{\partial t}}{\partial t} $$
+
+or, written compactly:
+
+\begin{equation}
+	\frac{\partial ^2V}{\partial x^2} = LC \frac{\partial ^2V}{\partial t^2}
+	\label{eqn3}
+\end{equation}
+
+Similarily
+
+\begin{equation}
+	\frac{\partial ^2I}{\partial x^2} = LC \frac{\partial ^2I}{\partial t^2}
+	\label{eqn4}
+\end{equation}
+
+For an infinite cable where there are no reflection from the end, we can assume that the solution for voltage and current pulses is a superposition of waves in two directions, i.e. 
+
+\begin{equation}
+	V = V_1e^{j(wt-kx)} + V_2e^{j(wt+kx)}
+	\label{eqn5}
+\end{equation}
+
+and 
+
+\begin{equation}
+	I = I_1e^{j(wt-kx)} + \phi_1 + I_2e^{j(wt+kx)} + \phi_2
+	\label{eqn6}
+\end{equation}
+
+where $\phi_1$ and $\phi_2$ are relative phases between the voltage and the current, $k$ is the wavenumber, and $\omega$ the angular frequency. Now, if we put \ref{eqn5} into \ref{eqn3} we get 
+
+$$ \frac{\partial ^2V}{\partial x^2} = \frac{\partial ^2(V_1e^{j(wt-kx)}+V_2e^{j(wt+kx)}}{\partial x} = $$
+
+$$ = (-k)^2V_1e^{j(wt-kx)} + (-k)^2V_2e^{j(wt+kx)} = $$
+
+$$ = k^2(V_1e^{j(wt-kx)} + V_2e^{j(wt+kx)} = k^2V $$
+
+and similarily 
+
+$$ LC\frac{\partial ^2V}{\partial t^2} = LC \omega ^2 V $$
+
+so from \ref{eqn3} we have:
+
+$$ k^2V = LC \omega ^2 V $$
+
+or 
+
+\begin{equation}
+	(k/ \omega )^2 = LC
+	\label{eqn7}
+\end{equation}
+
+If the end of the cable, at position $x = l$, is open circuited, the current there is zero, and thus we have a reflected wave which is $180 \degree $ out of the incident wave. This can be written as:
+
+\begin{equation}
+	I = I_0(e^{j(\omega t-k(x-l))} - e^{j(\omega t+k(x-l))})
+	\label{eqn8}
+\end{equation}
+
+The voltage is maximum at the end, so two waves are in phase at the end, which we can write as:
+
+\begin{equation}
+	V = V_0(e^{j(\omega t-k(x-l))} + e^{j(\omega t+k(x-l))})
+	\label{eqn9}
+\end{equation}
+
+For input impedance at arbitrary $t$ and $x$ we have:
+
+$$ Z_{in} = \frac{V}{I} = \frac{V_0}{I_0} \frac{e^{j(\omega t-k(x-l))} + e^{j(\omega t+k(x-l))}}{e^{j(\omega t-k(x-l))} - e^{j(\omega t+k(x-l))}}$$
+
+To make calculations more compact, let us substitute $A := \omega t$ and $B := k(x-l)$. The above then becomes:
+
+$$ Z_{in} = Z_0 \frac{e^{j(A-B)}+e^{j(A+B)}}{e^{j(A-B)}-e^{j(A+B)}} = $$
+
+$$Z_0 \frac{\cos(A-B) + i\sin(A-B) + \cos(A+B) + i\sin(A+B)}{\cos(A-B) + i\sin(A-B) - \cos(A+B) -i\sin(A-B)}$$
+
+$$ = Z_0 \frac{2\cos(A)\cos(B) + 2i\sin(A)\cos(B)}{-2\sin(A)\sin(B)+2i\cos(A)\sin(B)}$$
+
+Where last line was derived by using basic trigonometric identities, such as
+
+$$ \cos(A-B) + \cos(A+B) = 2\cos(A)\cos(B) $$
+
+etc. Continuing the chain we obtain:
+
+$$ = Z_0 \frac{\cos(B)}{\sin(B)} \frac{\cos(A) + i\sin(A)}{-\sin(A) + i\cos(A)} $$
+
+$$ = Z_0 \cot(B) \frac{e^{jA}}{-je^{jA}} = jZ_0 \cot(B) $$.
+
+Hence by substituting back $B = k(x-l)$ we get:
+
+\begin{equation}
+	Z_{in} = j Z_0 \cot(k(x-l))
+	\label{eqn10}
+\end{equation}
+
+at the generator side of the cable, where $x=0$, this gives us:
+
+\begin{equation}
+	Z_{in} = j Z_0 \cot(-kl) = -jZ_0\cot(kl)
+	\label{eqn11}
+\end{equation}
+
+If the end of the cable is shorted, we have that voltage at $x=l$ is zero, and current is maximum. Hence, the equations are similar to \ref{eqn8} and \ref{eqn9}, with inverted signs:
+
+\begin{equation}
+	I = I_0(e^{j(\omega t-k(x-l))} + e^{j(\omega t+k(x-l))})
+	\label{eqn12}
+\end{equation}
+
+\begin{equation}
+	V = V_0(e^{j(\omega t-k(x-l))} - e^{j(\omega t+k(x-l))})
+	\label{eqn13}
+\end{equation}
+
+Calculations are the same, only with numerator and denominator switched. This gets us:
+
+$$ Z_{in} = Z_0 \frac{\sin(B)}{\cos(B)} \frac{-je{jA}}{e^{jA}} = -j Z_0 \tan(B)	$$
+
+or, when substituting $B$ back:
+
+$$ Z_{in} = -j Z_0 \tan(k(x-l)) $$
+
+At the generator side, $x=0$, this means
+
+\begin{equation}
+	Z_{in} = -j Z_0 \tan(-kl) = jZ_0\tan(kl)
+	\label{eqn11}
+\end{equation}
 
 \end{document}
